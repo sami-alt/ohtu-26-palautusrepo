@@ -2,7 +2,15 @@ version = 1
 revision = 5
 requires-python = ">=3.14"
 
+[manifest]
+members = [
+    "ohtu-26-palautusrepo",
+    "uv-web",
+]
+
 [[package]]
 name = "ohtu-26-palautusrepo"
 version = "0.1.0"
 source = { editable = "." }
+
+
