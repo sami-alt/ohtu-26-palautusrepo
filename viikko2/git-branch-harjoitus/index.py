@@ -1,3 +1,5 @@
+#tehdään alussa importti
+
 from logger import logger
 from summa import summa
 from erotus import erotus
