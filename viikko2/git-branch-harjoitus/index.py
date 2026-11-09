@@ -13,3 +13,4 @@ print(f"{erotus(x, y)}")
 
 
 logger("lopetetaan")
+print("goodbye")# lisätty bugi korjaus
