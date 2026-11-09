@@ -7,7 +7,7 @@ from player_reader import PlayerReader
 from player_stats import PlayerStats
 
 
-def main():
+def parse_args():
     parser = argparse.ArgumentParser(
         description="List NHL players ranked by points."
     )
@@ -28,7 +28,10 @@ def main():
 
     if args.limit < 0:
         parser.error("--limit must be a non-negative integer")
+    return args
 
+
+def get_top_players(args):
     url = "https://studies.cs.helsinki.fi/nhlstats/2024-25/players"
     players = PlayerReader(url).get_players()
     top_players = PlayerStats(players).top_scorers_by_nationality(
@@ -36,9 +39,12 @@ def main():
     )
     if args.limit:
         top_players = top_players[:args.limit]
+    return top_players
 
+
+def create_table(nationality):
     table = Table(
-        title=f"Top NHL scorers from {args.nationality.upper()}",
+        title=f"Top NHL scorers from {nationality.upper()}",
         title_style="bold cyan",
         show_lines=False,
     )
@@ -49,8 +55,11 @@ def main():
     table.add_column("Goals", justify="right")
     table.add_column("Assists", justify="right")
     table.add_column("Points", justify="right", style="bold green")
+    return table
 
-    for rank, player in enumerate(top_players, start=1):
+
+def add_players_to_table(table, players):
+    for rank, player in enumerate(players, start=1):
         points = player.goals + player.assists
         table.add_row(
             str(rank),
@@ -62,6 +71,12 @@ def main():
             str(points),
         )
 
+
+def main():
+    args = parse_args()
+    top_players = get_top_players(args)
+    table = create_table(args.nationality)
+    add_players_to_table(table, top_players)
     Console().print(table)
 
 
