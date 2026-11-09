@@ -8,8 +8,8 @@ logger("aloitetaan")
 
 x = input("Luku 1: ")
 y = input("Luku 2: ")
-print(f"{summa(x, y)}")
-print(f"{erotus(x, y)}")
+print(f"Lukujen x{} ja {y} summa on {summa(x, y)}")
+print(f"Lukujen {x} ja {y}} summa on {erotus(x, y)}")
 
 
 logger("lopetetaan")
