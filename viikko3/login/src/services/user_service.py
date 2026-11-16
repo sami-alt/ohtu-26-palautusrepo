@@ -50,10 +50,10 @@ class UserService:
                 "Password must be at least 4 characters long"
             )
 
-#        if password.isalpha():
- #           raise UserInputError(
-  #              "Password must contain a number or special character"
-   #         )
+        if password.isalpha():
+            raise UserInputError(
+                "Password must contain a number or special character"
+         )
 
         if password != password_confirmation:
             raise UserInputError("Passwords do not match")
