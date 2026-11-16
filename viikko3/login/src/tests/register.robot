@@ -27,6 +27,41 @@ Register With Valid Username And Too Short Password
     Click  button >> text=Register
     Registration Should Fail With Message  Password must be at least 4 characters long
 
+Register With Password Containing Numbers
+    Set Username  matti
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
+    Click  button >> text=Register
+    Welcome Page Should Be Open
+
+Register With Password Containing Special Characters
+    Set Username  pekka
+    Set Password  kalle#abc
+    Set Password Confirmation  kalle#abc
+    Click  button >> text=Register
+    Welcome Page Should Be Open
+
+Register With Lowercase Letters Only Password
+    Set Username  maija
+    Set Password  kallekalle
+    Set Password Confirmation  kallekalle
+    Click  button >> text=Register
+    Registration Should Fail With Message  Password must contain a number or special character
+
+Register With Uppercase Letters Only Password
+    Set Username  teemu
+    Set Password  KalleKalle
+    Set Password Confirmation  KalleKalle
+    Click  button >> text=Register
+    Registration Should Fail With Message  Password must contain a number or special character
+
+Register With Mismatching Password Confirmation
+    Set Username  ville
+    Set Password  kalle123
+    Set Password Confirmation  kalle456
+    Click  button >> text=Register
+    Registration Should Fail With Message  Passwords do not match
+
 Register With Username That Is Already In Use
     Set Username  kalle
     Set Password  kalle123
