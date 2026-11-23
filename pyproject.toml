@@ -7,7 +7,9 @@ authors = [
     { name = "Sami Räihä", email = "sami.raiha@helsinki.fi" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "coverage>=7.17.4",
+]
 
 [project.scripts]
 ohtu-26-palautusrepo = "ohtu_26_palautusrepo:main"
@@ -19,5 +21,10 @@ build-backend = "uv_build"
 [tool.uv.workspace]
 members = [
 
+]
+
+[dependency-groups]
+dev = [
+    "coverage>=7.17.4",
 ]
 
